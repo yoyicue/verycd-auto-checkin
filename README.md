@@ -13,14 +13,16 @@
 ```
 git clone https://github.com/yoyicue/verycd-auto-checkin.git
 virtualenv .env --distribute --no-site-packages
-.env/bin/pip install -r requirements.txt -i http://e.pypi.python.org/simple
+.env/bin/pip install requests==1.0.2 -i http://e.pypi.python.org/simple
 ```
 
 ### 使用
 进入环境
+
 ```
 . .env/bin/activate
 ```
+
 登录并签到
 
 ```
@@ -42,6 +44,10 @@ virtualenv .env --distribute --no-site-packages
 使用 `crontab` 在服务器上每天自动领签到, 记得替换依赖 Requests 的 Pyhton 路径
 
 ```
-TODO
+touch /var/spool/cron/crontabs/root
+echo "30 10 * * * /root/verycd-auto-checkin/.env/bin/python /root/verycd-auto-checkin/verycd.py checkin > /root/verycd-auto-checkin/checkin.log 2>&1" >> /var/spool/cron/crontabs/root
+crontab -l
+
+
 ```
-另外, 可以蛋疼的使用 [Growl](http://growl.info/) 和管道, 可以发送 iOS 签到成功的消息.
+另外, 可以继续蛋疼的使用 [Growl](http://growl.info/) 和管道, 可以发送 iOS 签到成功的消息.
