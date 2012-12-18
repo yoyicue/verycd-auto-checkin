@@ -47,7 +47,5 @@ virtualenv .env --distribute --no-site-packages
 touch /var/spool/cron/crontabs/root
 echo "30 10 * * * /root/verycd-auto-checkin/.env/bin/python /root/verycd-auto-checkin/verycd.py checkin > /root/verycd-auto-checkin/checkin.log 2>&1" >> /var/spool/cron/crontabs/root
 crontab -l
-
-
 ```
 另外, 可以继续蛋疼的使用 [Growl](http://growl.info/) 和管道, 可以发送 iOS 签到成功的消息.
