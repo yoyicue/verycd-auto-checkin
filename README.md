@@ -13,8 +13,7 @@
 ```
 git clone https://github.com/yoyicue/verycd-auto-checkin.git
 virtualenv .env --distribute --no-site-packages
-.env/bin/pip install requests==1.0.2 -i http://e.pypi.python.org/simple
-
+.env/bin/pip install -r requirements.txt -i http://e.pypi.python.org/simple
 ```
 
 ### 使用
@@ -26,19 +25,16 @@ virtualenv .env --distribute --no-site-packages
 
 ```
 ./verycd.py checkin -u 'username,password'
-
 ```
 仅签到
 
 ```
 ./verycd.py checkin
-
 ```
 仅登录
 
 ```
 ./verycd.py login -u 'username,password'
-
 ```
 
 
