@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 
+import os
 import sys
 import requests
 import json
@@ -15,11 +16,11 @@ class VeryCD:
            'X-Requested-With':'XMLHttpRequest'}
     login_url = 'http://www.verycd.com/signin'
     check_url = 'http://www.verycd.com/game/ajax/checkin/'
+    cookie_file = os.path.join(os.path.realpath(sys.path[0]), '.verycd_cookies')
 
-    def __init__(self, username=None, password=None, cookie_file='.verycd_cookies'):
+    def __init__(self, username=None, password=None):
         self.username = username
         self.password = password
-        self.cookie_file = cookie_file
 
     def get_url(self, url, **args):
         return requests.get(url, **args)

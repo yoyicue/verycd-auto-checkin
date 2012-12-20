@@ -12,6 +12,7 @@
 
 ```
 git clone https://github.com/yoyicue/verycd-auto-checkin.git
+cd verycd-auto-checkin
 virtualenv .env --distribute --no-site-packages
 .env/bin/pip install requests==1.0.2 -i http://e.pypi.python.org/simple
 ```
@@ -21,6 +22,7 @@ virtualenv .env --distribute --no-site-packages
 
 ```
 . .env/bin/activate
+chmod a+w verycd.py
 ```
 
 登录并签到
@@ -44,6 +46,7 @@ virtualenv .env --distribute --no-site-packages
 使用 `crontab` 在服务器上每天自动领签到, 记得替换依赖 Requests 的 Pyhton 路径
 
 ```
+echo '' > /root/verycd-auto-checkin/checkin.log
 touch /var/spool/cron/crontabs/root
 echo "30 10 * * * /root/verycd-auto-checkin/.env/bin/python /root/verycd-auto-checkin/verycd.py checkin > /root/verycd-auto-checkin/checkin.log 2>&1" >> /var/spool/cron/crontabs/root
 crontab -l
